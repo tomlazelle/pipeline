@@ -1,0 +1,35 @@
+mode: ContinuousDelivery
+branches:
+  main:
+    mode: ContinuousDelivery
+    tag: ''
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    source-branches: [ 'develop', 'feature', 'hotfix' ]
+  develop:
+    mode: ContinuousDeployment
+    tag: 'alpha'
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+    source-branches: [ 'feature' ]
+  feature:
+    mode: ContinuousDeployment
+    tag: 'feature-{BranchName}'
+    increment: Inherit
+    source-branches: [ 'develop' ]
+  hotfix:
+    mode: ContinuousDeployment
+    tag: 'beta'
+    increment: Patch
+    source-branches: [ 'main' ]
+  pull-request:
+    mode: ContinuousDelivery
+    tag: 'pr'
+    increment: Inherit
+    tag-number-pattern: '[/-](?<number>\d+)'
+ignore:
+  sha: []
+merge-message-formats: {}
+next-version: 1.0.0

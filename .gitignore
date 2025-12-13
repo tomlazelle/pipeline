@@ -9,6 +9,7 @@
 ## User-specific files
 *.user
 *.suo
+RELEASE.md
 
 ## NuGet
 *.nupkg
@@ -18,4 +19,11 @@
 .DS_Store
 Thumbs.db
 
+## Test Results & Coverage
 /TestResults/**
+/coverage/**
+/coveragereport/**
+code-coverage-results.md
+
+## Build Artifacts
+/artifacts/**
