@@ -95,11 +95,15 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: nuget-package
-        path: ./artifacts/*.nupkg
+        path: |
+          ./artifacts/*.nupkg
+          ./artifacts/*.snupkg
     
     - name: Push to NuGet
       if: startsWith(github.ref, 'refs/tags/v')
-      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: |
+        dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        dotnet nuget push ./artifacts/*.snupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     
@@ -107,7 +111,9 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/v')
       uses: softprops/action-gh-release@v2
       with:
-        files: ./artifacts/*.nupkg
+        files: |
+          ./artifacts/*.nupkg
+          ./artifacts/*.snupkg
         generate_release_notes: true
         draft: false
         prerelease: ${{ steps.gitversion.outputs.preReleaseTag != '' }}
