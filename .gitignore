@@ -1,0 +1,21 @@
+## Build results
+[Bb]in/
+[Oo]bj/
+
+## Visual Studio / VS Code
+.vs/
+.vscode/
+
+## User-specific files
+*.user
+*.suo
+
+## NuGet
+*.nupkg
+*.snupkg
+
+## OS
+.DS_Store
+Thumbs.db
+
+/TestResults/**

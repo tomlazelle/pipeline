@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <!-- Ensure SourceLink info can be added later if desired -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+</Project>
