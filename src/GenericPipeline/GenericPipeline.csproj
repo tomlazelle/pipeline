@@ -1,17 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>GenericPipeline</AssemblyName>
+    <AssemblyName>abes.GenericPipeline</AssemblyName>
     <RootNamespace>GenericPipeline</RootNamespace>
-    <Description>Generic, DI-friendly middleware pipeline with ordering, diagnostics, and scoped execution.</Description>
-    <PackageId>GenericPipeline</PackageId>
-    <Authors>GenericPipeline Contributors</Authors>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>abes, Generic, DI-friendly middleware pipeline with ordering, diagnostics, and scoped execution.</Description>
+    <PackageId>abes.GenericPipeline</PackageId>
+    <Authors>$(Authors)</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageTags>pipeline;middleware;di;aspnetcore;behaviors</PackageTags>
+    <Title>abes Generic Pipeline</Title>
+    <RepositoryUrl>https://github.com/tomlazelle/pipeline</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <AssemblyTitle>abes.GenericPipeline</AssemblyTitle>
+    <PackageProjectUrl>https://github.com/tomlazelle/pipeline</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +24,6 @@
 
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\README.md" />
-    <None Include="..\..\LICENSE" Pack="true" PackagePath="\LICENSE" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
