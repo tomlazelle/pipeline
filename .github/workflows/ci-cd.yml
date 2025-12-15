@@ -16,6 +16,10 @@ env:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required for creating GitHub releases
+      actions: read    # Default, but explicit for clarity
+      checks: write    # For test results and coverage status
     environment:
       name: production
       url: https://www.nuget.org/packages/abes.GenericPipeline
