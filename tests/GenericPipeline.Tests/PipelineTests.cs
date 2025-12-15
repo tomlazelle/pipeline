@@ -3,7 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 using Xunit;
 
-public sealed class MyContext : PipelineContext
+namespace GenericPipeline.Tests
+{
+    public sealed class MyContext : PipelineContext
 {
     public bool IsAuthorized { get; set; }
     public List<string> Trace { get; } = new();
@@ -26,16 +28,16 @@ public sealed class LoggingMiddleware : IPipelineMiddleware<MyContext>
 }
 
 public sealed class AuthorizationMiddleware :
-    ISyncPipelineMiddleware<MyContext>,
+    IPipelineMiddleware<MyContext>,
     IRunBefore<LoggingMiddleware>
 {
-    public void Invoke(MyContext context, Action next)
+    public ValueTask InvokeAsync(MyContext context, PipelineDelegate<MyContext> next)
     {
         context.Trace.Add("auth");
         if (!context.IsAuthorized)
-            return;
+            return ValueTask.CompletedTask;
 
-        next();
+        return next(context);
     }
 }
 
@@ -419,7 +421,7 @@ public sealed class PipelineTests
     }
 
     [Fact]
-    public async Task Sync_And_Async_Middleware_Mix()
+    public async Task Async_Pipeline_With_Multiple_Middlewares()
     {
         var services = new ServiceCollection();
         services.AddScoped<AuthorizationMiddleware>(); // Sync
@@ -472,4 +474,4 @@ public sealed class PipelineTests
         ctx.Items["test-key"].ShouldBe("test-value");
         ctx.Items.Keys.ShouldContain("__GenericPipeline_ServiceProvider");
     }
-}
+}}

@@ -1,0 +1,20 @@
+{
+  // .NET Configuration
+  "dotnet.defaultSolution": "GenericPipeline.sln",
+  
+  // Test Explorer Settings
+  "dotnet-test-explorer.testProjectPath": "tests/**/*.csproj",
+  "dotnet-test-explorer.useTreeView": true,
+  "dotnet-test-explorer.showCodeLens": true,
+  "dotnet-test-explorer.codeLensFailed": "❌ {0}",
+  "dotnet-test-explorer.codeLensPassed": "✅ {0}",
+  
+  // VS Code Test Explorer
+  "testing.automaticallyOpenPeekView": "never",
+  "testing.openTesting": "neverOpen",
+  
+  // C# Dev Kit
+  "dotnet.unitTests.runSettingsPath": null,
+  "dotnet.codeLens.enableTestsCodeLens": true,
+  "testing.automaticallyOpenTestResults": "neverOpen"
+}
